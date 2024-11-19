@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script>
+        // Preia parametrii din URL
+        const params = new URLSearchParams(window.location.search);
+        const oobCode = params.get('oobCode');
+
+        // Redirecționează către aplicația Flutter
+        if (oobCode) {
+            window.location.href = `myapp://resetPassword?oobCode=${oobCode}`;
+        } else {
+            document.body.innerHTML = '<h1>Error: Missing oobCode</h1>';
+        }
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+</body>
+</html>
