@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
     <script>
-        // Preia parametrii din URL
+        // Obține parametrii din URL-ul Firebase
         const params = new URLSearchParams(window.location.search);
-        const oobCode = params.get('oobCode');
+        const oobCode = params.get('oobCode'); // Cod unic de acțiune
+        const mode = params.get('mode'); // Tipul acțiunii (e.g., resetare parolă)
 
-        // Redirecționează către aplicația Flutter
-        if (oobCode) {
-            window.location.href = `myapp://resetPassword?oobCode=${oobCode}`;
+        // Verifică dacă linkul este valid și redirecționează
+        if (oobCode && mode === "resetPassword") {
+            window.location.href = `myapp://auth/reset?oobCode=${oobCode}`;
         } else {
-            document.body.innerHTML = '<h1>Error: Missing oobCode</h1>';
+            document.body.innerHTML = "<h1>Invalid Link</h1>";
         }
     </script>
 </head>
@@ -19,3 +22,4 @@
     <h1>Redirecting...</h1>
 </body>
 </html>
+
